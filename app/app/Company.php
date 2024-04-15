@@ -2,10 +2,12 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    use HasFactory;
 
     /**
      * The table associated with the model.
@@ -20,18 +22,4 @@ class Company extends Model
      * @var array
      */
     protected $fillable = ['nome', 'cnpj', 'cep'];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [];
 }

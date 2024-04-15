@@ -10,8 +10,8 @@ class CompanySeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        factory(Company::class, 1000)->create();
+        Company::factory(1000)->create();
     }
 }

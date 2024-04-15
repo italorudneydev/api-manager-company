@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libjpeg-dev \
     libmcrypt-dev \
+    libonig-dev \
     libpng-dev \
+    libzip-dev \
     libreadline-dev \
     sudo \
     unzip \
