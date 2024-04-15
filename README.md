@@ -1,7 +1,7 @@
 Claro, aqui está um exemplo de como você pode criar um arquivo `README.md` para o seu projeto:
 
 ```markdown
-# Nome do Projeto
+# api-manager-company
 
 Este é um projeto que utiliza PHP, JavaScript, Docker, Composer e Laravel.
 
