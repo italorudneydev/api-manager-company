@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empresas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Buscar Empresas por CEP</h1>
+    <form id="searchForm">
+        <div class="form-group">
+            <label for="cep">CEP:</label>
+            <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" name="cep">
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>CEP</th>
+        </tr>
+        </thead>
+        <tbody id="companyData">
+        <!-- Empresas serão listadas aqui -->
+        </tbody>
+    </table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchForm').on('submit', function(e) {
+            e.preventDefault();
+            var cep = $('#cep').val();
+            $.ajax({
+                url: 'http://localhost:8000/api/companies', // Substitua pela URL correta do seu servidor
+                type: 'GET',
+                data: {cep: cep},
+                success: function(data) {
+                    var html = '';
+                    $.each(data, function(index, company) {
+                        html += '<tr>' +
+                            '<td>' + company.id + '</td>' +
+                            '<td>' + company.nome + '</td>' +
+                            '<td>' + company.cnpj + '</td>' +
+                            '<td>' + company.cep + '</td>' +
+                            '</tr>';
+                    });
+                    $('#companyData').html(html);
+                },
+                error: function(error) {
+                    console.log("Erro ao buscar empresas: ", error);
+                    alert('Erro ao buscar empresas. Verifique o console para mais detalhes.');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
